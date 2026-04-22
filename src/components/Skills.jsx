@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './Skills.css';
 
 const Skills = () => {
@@ -9,7 +10,7 @@ const Skills = () => {
         },
         {
             title: "Frontend Development",
-            skills: ["React.js / Next.js", "Tailwind CSS", "GSAP Animations", "Three.js / Canvas", "Modern JavaScript"]
+            skills: ["React.js / Next.js", "React Native", "Tailwind CSS", "GSAP Animations", "Three.js / Canvas", "Modern JavaScript"]
         },
         {
             title: "Backend & Systems",
@@ -24,14 +25,27 @@ const Skills = () => {
     return (
         <section id="skills" className="skills-section">
             <div className="container">
-                <div className="section-header">
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                    className="section-header"
+                >
                     <h2 className="section-title">Technical <span className="gradient-text">Expertise</span></h2>
                     <div className="title-underline"></div>
-                </div>
+                </motion.div>
 
                 <div className="skills-grid">
                     {skillCategories.map((cat, idx) => (
-                        <div key={idx} className="skill-category glass-card">
+                        <motion.div 
+                            key={idx} 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.5, delay: idx * 0.15 }}
+                            className="skill-category glass-card"
+                        >
                             <h3 className="category-title">{cat.title}</h3>
                             <ul className="skill-list">
                                 {cat.skills.map((skill, sIdx) => (
@@ -41,7 +55,7 @@ const Skills = () => {
                                     </li>
                                 ))}
                             </ul>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

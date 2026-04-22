@@ -1,30 +1,30 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './About.css';
-import profileImg from '../assets/anusha-profile.jpg';
 
 const About = () => {
     return (
         <section id="about" className="about-section">
             <div className="container">
-                <div className="section-header">
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                    className="section-header"
+                >
                     <h2 className="section-title">About <span className="gradient-text">Me</span></h2>
                     <div className="title-underline"></div>
-                </div>
+                </motion.div>
 
                 <div className="about-grid">
-                    <div className="about-image-area">
-                        <div className="image-frame">
-                            <div className="image-container glass-card">
-                                <img src={profileImg} alt="Anusha Sabir" className="profile-image" />
-                            </div>
-                            <div className="experience-badge glow-on-hover">
-                                <span className="years">Expert</span>
-                                <span className="exp-text">In AI Agents<br />& Automations</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="about-text-area">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="about-text-area"
+                    >
                         <h3>Automating the Future with Agentic Intelligence</h3>
                         <p>
                             I am **Anusha Sabir**, a specialized developer focused on **Agentic AI** and high-performance workflow automations.
@@ -51,7 +51,7 @@ const About = () => {
                             </div>
                         </div>
                         <button className="btn-secondary">Download Portfolio CV</button>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

@@ -1,8 +1,19 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './Projects.css';
 
 const Projects = () => {
     const projectList = [
+        {
+            title: "School Management System",
+            category: "Web App",
+            description: "A comprehensive platform designed to streamline administrative tasks, student tracking, and educational workflows.",
+            tags: ["React", "UI/UX", "Management Portal"],
+            image: "/school-system.png",
+            icon: "🏫",
+            fiverr: "https://fiverr.com/anusharao1506",
+            link: "https://v0-school-management-system-sandy-seven.vercel.app"
+        },
         {
             title: "Multi-Marketplace Sync",
             category: "System Dev",
@@ -35,7 +46,7 @@ const Projects = () => {
             category: "AI / SEO",
             description: "Strategic tool that utilizes GPT-4 to generate optimized product titles, descriptions, and SEO tags for marketplaces.",
             tags: ["OpenAI", "Prompt Engineering", "Full Stack"],
-            image: "https://images.unsplash.com/photo-1620712943543-bcc4628c6ad1?auto=format&fit=crop&q=80&w=800",
+            image: "/ai_optimizer.png",
             icon: "✨",
             fiverr: "https://fiverr.com/anusharao1506"
         },
@@ -44,7 +55,7 @@ const Projects = () => {
             category: "DevOps",
             description: "Enterprise CI/CD solution for automated deployment and runtime correction for multi-service architectures.",
             tags: ["Vercel", "GitHub Actions", "Shell Scripting"],
-            image: "https://images.unsplash.com/photo-1618401471353-b98aadebc25a?auto=format&fit=crop&q=80&w=800",
+            image: "/vercel_pipeline.png",
             icon: "🏗️",
             fiverr: "https://fiverr.com/anusharao1506"
         }
@@ -53,14 +64,27 @@ const Projects = () => {
     return (
         <section id="projects" className="projects-section">
             <div className="container">
-                <div className="section-header">
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                    className="section-header"
+                >
                     <h2 className="section-title">High-Impact <span className="gradient-text">Projects</span></h2>
                     <div className="title-underline"></div>
-                </div>
+                </motion.div>
 
                 <div className="projects-grid">
                     {projectList.map((project, idx) => (
-                        <div key={idx} className="project-card glass-card">
+                        <motion.div 
+                            key={idx} 
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.6, delay: idx * 0.1 }}
+                            className="project-card glass-card"
+                        >
                             <div className="project-image-container">
                                 <img src={project.image} alt={project.title} className="project-img" />
                                 <div className="project-overlay">
@@ -77,17 +101,25 @@ const Projects = () => {
                                     ))}
                                 </div>
                                 <div className="project-link-group">
-                                    <a href="#" className="link-arrow">Case Study →</a>
+                                    <a href={project.link || "#"} target={project.link ? "_blank" : "_self"} rel="noreferrer" className="link-arrow">
+                                        {project.link ? "View Live →" : "Case Study →"}
+                                    </a>
                                     <a href={project.fiverr} target="_blank" rel="noreferrer" className="btn-fiverr">Hire on Fiverr</a>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
-                <div className="view-more">
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.5 }}
+                    className="view-more"
+                >
                     <button className="btn-secondary">Explore More Work</button>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

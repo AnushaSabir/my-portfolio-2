@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './Testimonials.css';
 
 const Testimonials = () => {
@@ -26,14 +27,27 @@ const Testimonials = () => {
     return (
         <section id="testimonials" className="testimonials-section">
             <div className="container">
-                <div className="section-header">
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6 }}
+                    className="section-header"
+                >
                     <h2 className="section-title">Client <span className="gradient-text">Reviews</span></h2>
                     <div className="title-underline"></div>
-                </div>
+                </motion.div>
 
                 <div className="testimonials-grid">
                     {testimonials.map((t, idx) => (
-                        <div key={idx} className="testimonial-card glass-card">
+                        <motion.div 
+                            key={idx} 
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.6, delay: idx * 0.15 }}
+                            className="testimonial-card glass-card"
+                        >
                             <div className="stars">
                                 {[...Array(t.rating)].map((_, i) => <span key={i}>⭐</span>)}
                             </div>
@@ -42,7 +56,7 @@ const Testimonials = () => {
                                 <strong>{t.name}</strong>
                                 <span>{t.role}</span>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
